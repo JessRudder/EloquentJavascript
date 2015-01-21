@@ -1,17 +1,21 @@
-var counter = 0;
-
-function countBs(phrase) {
+function countBs(phrase, finStr) {
+  if (finStr === undefined) {
+   var finStr = ""; 
+  }
   if (phrase.length === 1) {
     if (phrase.charAt(0) === "B") {
-      counter += 1;
+      debugger;
+      finStr += phrase.charAt(0);
     }
   } else {
     if (phrase.charAt(0) === "B") {
-      counter += 1;
-      countBs(phrase.slice(1,phrase.length));
+      debugger;
+      finStr += phrase.charAt(0);
+      countBs(phrase.slice(1,phrase.length), finStr);
     } else {
-      countBs(phrase.slice(1,phrase.length));
+      debugger;
+      countBs(phrase.slice(1,phrase.length), finStr);
     }
   }
-  return counter;
+  return finStr.length;
 }
