@@ -1,6 +1,7 @@
 function countBs(phrase, finStr) {
   if (finStr === undefined) {
-   var finStr = ""; 
+    debugger;
+    var finStr = ""; 
   }
   if (phrase.length === 1) {
     if (phrase.charAt(0) === "B") {
