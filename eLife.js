@@ -40,3 +40,22 @@ var directions = {
   "w":  new Vector(-1,  0),
   "nw": new Vector(-1, -1)
 };
+
+//view object has a method look, which takes a direction and returns a character, for example "#" when there is a wall in that direction, or " " (space) when there is nothing there. The object also provides the convenient methods find and findAll.
+
+//random direction critter
+function randomElement(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+var directionNames = "n ne e se s sw w nw".split(" ");
+
+function BouncingCritter() {
+  this.direction = randomElement(directionNames);
+};
+
+BouncingCritter.prototype.act = function(view) {
+  if (view.look(this.direction) != " ")
+    this.direction = view.find(" ") || "s";
+  return {type: "move", direction: this.direction};
+};
