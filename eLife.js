@@ -80,3 +80,25 @@ function World(map, legend) {
                elementFromChar(legend, line[x]));
   });
 }
+
+//
+function charFromElement(element) {
+  if (element == null)
+    return " ";
+  else
+    return element.originChar;
+}
+
+World.prototype.toString = function() {
+  var output = "";
+  for (var y = 0; y < this.grid.height; y++) {
+    for (var x = 0; x < this.grid.width; x++) {
+      var element = this.grid.get(new Vector(x, y));
+      output += charFromElement(element);
+    }
+    output += "\n";
+  }
+  return output;
+};
+
+function Wall() {}
