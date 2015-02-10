@@ -132,3 +132,23 @@ World.prototype.turn = function() {
     }
   }, this);
 };
+
+// contains the actual logic that allows the critters to move.
+World.prototype.letAct = function(critter, vector) {
+  var action = critter.act(new View(this, vector));
+  if (action && action.type == "move") {
+    var dest = this.checkDestination(action, vector);
+    if (dest && this.grid.get(dest) == null) {
+      this.grid.set(vector, null);
+      this.grid.set(dest, critter);
+    }
+  }
+};
+
+World.prototype.checkDestination = function(action, vector) {
+  if (directions.hasOwnProperty(action.direction)) {
+    var dest = vector.plus(directions[action.direction]);
+    if (this.grid.isInside(dest))
+      return dest;
+  }
+};
