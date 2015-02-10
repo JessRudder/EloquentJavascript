@@ -110,3 +110,25 @@ World.prototype.toString = function() {
 };
 
 function Wall() {}
+
+// calls a given function for each element in the grid that isn’t null or undefined
+Grid.prototype.forEach = function(f, context) {
+  for (var y = 0; y < this.height; y++) {
+    for (var x = 0; x < this.width; x++) {
+      var value = this.space[x + y * this.width];
+      if (value != null)
+        f.call(context, value, new Vector(x, y));
+    }
+  }
+};
+
+// Tracks creatures that have already had their turn so they don't get 2nd turn if we check their new space
+World.prototype.turn = function() {
+  var acted = [];
+  this.grid.forEach(function(critter, vector) {
+    if (critter.act && acted.indexOf(critter) == -1) {
+      acted.push(critter);
+      this.letAct(critter, vector);
+    }
+  }, this);
+};
