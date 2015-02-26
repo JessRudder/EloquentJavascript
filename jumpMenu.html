@@ -1,0 +1,27 @@
+<script language="javascript" type="text/javascript" >
+<!-- hide
+function jumpto(x){
+
+if (document.form1.jumpmenu.value != "null") {
+  document.location.href = x
+  }
+}
+
+// end hide -->
+</script>
+<p>Jump Menu:</p>
+<form name="form1">
+<select name="jumpmenu" onChange="jumpto(document.form1.jumpmenu.options[document.form1.jumpmenu.options.selectedIndex].value)">
+  <option>Jump to...</option>
+  <option value=http://www.quackit.com>Quackit Homepage</option>
+  <option value=http://www.quackit.com/javascript/>JavaScript</option>
+  <option value=http://www.quackit.com/html/>HTML</option>
+  <option value=http://www.quackit.com/css/>CSS</option>
+  <option value=http://www.quackit.com/sql/tutorial/>SQL</option>
+  <option value=http://www.quackit.com/database/tutorial/>Database Tutorial</option>
+  <option value=http://www.quackit.com/web_hosting/>Web Hosting Tutorial</option>
+</select>
+</form>
+<div class="more-info">
+<p>More info: <a href="/javascript/javascript_dropdown_menu.cfm">Jump Menu</a></p>
+</div>
